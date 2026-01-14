@@ -1,13 +1,13 @@
 {
   "name": "vite-react-typescript-starter",
-  "private": false,
+  "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host",
+    "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
+    "preview": "vite preview --host",
     "typecheck": "tsc --noEmit -p tsconfig.app.json"
   },
   "dependencies": {
