@@ -34,24 +34,29 @@ function AdminLogin({ onLoginSuccess }: AdminLoginProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center px-4">
-      <div className="max-w-md w-full">
-        <div className="bg-white rounded-2xl shadow-2xl p-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center px-4 relative overflow-hidden">
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-20 right-20 w-96 h-96 bg-cyan-400 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-blue-400 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="max-w-md w-full relative z-10">
+        <div className="bg-gradient-to-br from-slate-800 to-slate-700 rounded-3xl shadow-2xl p-10 border border-slate-600">
           <div className="flex items-center justify-center mb-8">
-            <div className="bg-blue-600 p-4 rounded-full">
+            <div className="bg-gradient-to-br from-cyan-400 to-blue-600 p-4 rounded-2xl">
               <Shield className="w-8 h-8 text-white" />
             </div>
           </div>
 
-          <h1 className="text-3xl font-bold text-center text-slate-900 mb-2">
-            Admin Login
+          <h1 className="text-3xl font-bold text-center text-white mb-2">
+            Admin Access
           </h1>
-          <p className="text-center text-slate-600 mb-8">
+          <p className="text-center text-slate-400 mb-8">
             Cybersecurity for Normal People
           </p>
 
           {error && (
-            <div className="mb-6 bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg flex items-start gap-3">
+            <div className="mb-6 bg-red-500/20 border border-red-500/50 text-red-300 px-4 py-3 rounded-lg flex items-start gap-3">
               <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
               <span className="text-sm">{error}</span>
             </div>
@@ -59,7 +64,7 @@ function AdminLogin({ onLoginSuccess }: AdminLoginProps) {
 
           <form onSubmit={handleLogin} className="space-y-6">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
                 Email Address
               </label>
               <input
@@ -68,13 +73,13 @@ function AdminLogin({ onLoginSuccess }: AdminLoginProps) {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                className="w-full px-4 py-3 bg-slate-700 border border-slate-600 text-white rounded-xl focus:ring-2 focus:ring-cyan-400 focus:border-transparent outline-none placeholder-slate-500 transition-all"
                 placeholder="admin@example.com"
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-slate-700 mb-2">
+              <label htmlFor="password" className="block text-sm font-medium text-slate-300 mb-2">
                 Password
               </label>
               <input
@@ -83,7 +88,7 @@ function AdminLogin({ onLoginSuccess }: AdminLoginProps) {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                className="w-full px-4 py-3 bg-slate-700 border border-slate-600 text-white rounded-xl focus:ring-2 focus:ring-cyan-400 focus:border-transparent outline-none placeholder-slate-500 transition-all"
                 placeholder="Enter your password"
               />
             </div>
@@ -91,24 +96,23 @@ function AdminLogin({ onLoginSuccess }: AdminLoginProps) {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2"
+              className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 disabled:from-slate-500 disabled:to-slate-600 text-white font-semibold py-3 px-6 rounded-xl transition-all flex items-center justify-center gap-2"
             >
               <LogIn className="w-5 h-5" />
               {loading ? 'Signing in...' : 'Sign In'}
             </button>
           </form>
 
-          <div className="mt-8 pt-6 border-t border-slate-200">
-            <p className="text-sm text-slate-600 text-center">
-              This login uses Supabase Auth and is protected against SQL injection
-              and other common security vulnerabilities.
+          <div className="mt-8 pt-6 border-t border-slate-600">
+            <p className="text-xs text-slate-400 text-center">
+              Secured with Supabase Auth. Protected against SQL injection and common vulnerabilities.
             </p>
           </div>
         </div>
 
         <button
           onClick={() => window.location.href = '/'}
-          className="mt-6 w-full text-white hover:text-slate-200 transition-colors text-center"
+          className="mt-6 w-full text-slate-400 hover:text-cyan-400 transition-colors text-center text-sm"
         >
           ← Back to Home
         </button>
